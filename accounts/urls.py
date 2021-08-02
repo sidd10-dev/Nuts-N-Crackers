@@ -1,19 +1,12 @@
+from django.shortcuts import redirect
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LoginView,LogoutView
 
-app_name = "nnc"
+app_name = "accounts"
 
 urlpatterns = [
-    path('',views.home,name = 'home'),
-    path('products/<slug:slug>/',views.productpage,name = 'product'),
-    path('allproducts/',views.allproductpage, name = 'allproduct'),
-    path('cart/',views.cart,name = 'cart'),
-    path('addtocart/<int:pk>',views.addtocart,name = 'addtocart'),
-    path('addtocartt/<int:pk>/<int:quantity>',views.addtocartt,name='addtocartt'),
-    path('increase/<int:pk>',views.increaseqty,name = 'increase'),
-    path('decrease/<int:pk>',views.decreaseqty,name = 'decrease'),
-    path('remove/<int:pk>',views.remove,name = 'remove'),
-    path('checkout/',views.checkout,name = 'checkout'),
-    path('orders/',views.orders,name = 'orders'),
-    path('order/<int:pk>',views.order_detail,name = 'orderdetail')
+    path('signup/',views.signup,name = 'signup'),
+    path('userlogin/',views.userlogin,name = 'userlogin'),
+    path('logout/',LogoutView.as_view(),name = 'logout')
 ]
